@@ -35,6 +35,9 @@ export const metadata = {
   },
 };
 
+
+
+
 const Home = async () => {
   const data = await getAllProductAction();
 
