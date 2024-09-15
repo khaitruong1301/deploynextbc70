@@ -2,19 +2,34 @@ import { getAllProductAction, getProductByIdAction } from '@/app/actions/service
 import React from 'react';
 import Image from 'next/image';
 
-// Hàm này tạo ra danh sách các ID mà ứng dụng sẽ tạo trang tĩnh cho chúng
-// export async function generateStaticParams() {
-//   // Giả sử bạn có một hàm lấy tất cả sản phẩm, trả về danh sách ID sản phẩm
-//   const products = await getAllProductAction(); // Hàm này cần được triển khai nếu chưa có
-  
-//   return products.map(product => ({
-//     id: product.id.toString(), // Trả về ID dưới dạng string
-//   }));
-// }
+// Hàm này tạo metadata động cho trang dựa trên dữ liệu của sản phẩm
+export async function generateMetadata({ params }) {
+  const prodDetail = await getProductByIdAction(params.id);
+
+  return {
+    title: `${prodDetail.name} - Product Details`,
+    description: prodDetail.description,
+    openGraph: {
+      title: prodDetail.name,
+      description: prodDetail.description,
+      images: [
+        {
+          url: prodDetail.image,
+          alt: prodDetail.alias,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: prodDetail.name,
+      description: prodDetail.description,
+      image: prodDetail.image,
+    },
+  };
+}
 
 const Detail = async ({ params }) => {
   const prodDetail = await getProductByIdAction(params.id); // Lấy chi tiết sản phẩm theo ID
-  console.log('data', prodDetail);
 
   return (
     <div className='container'>
