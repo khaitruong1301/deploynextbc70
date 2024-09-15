@@ -1,0 +1,21 @@
+{
+  "name": "shoes_shop_bc70_nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postbuild": "next-sitemap",
+    "export": "next export"
+
+  },
+  "dependencies": {
+    "next": "14.2.8",
+    "next-sitemap": "^4.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.33.5"
+  }
+}

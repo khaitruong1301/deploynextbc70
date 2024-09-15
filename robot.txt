@@ -1,0 +1,6 @@
+# robots.txt for Your Domain
+User-agent: *
+Disallow: /admin/
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap.xml
