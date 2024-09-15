@@ -13,7 +13,7 @@ export const metadata = {
     url: 'https://yourdomain.com',
     images: [
       {
-        url: 'https://yourdomain.com/images/og-image.jpg', // Thay bằng URL hình ảnh thực tế
+        url: 'https://apistore.cybersoft.edu.vn/images/vans-black-black.png', // Thay bằng URL hình ảnh thực tế
         width: 800,
         height: 600,
         alt: 'Latest Shoes Collection',
@@ -25,7 +25,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Shoes App - Latest Shoe Collection',
     description: 'Discover and shop the latest shoes collection with detailed reviews.',
-    images: ['https://yourdomain.com/images/twitter-image.jpg'], // Thay bằng URL hình ảnh thực tế
+    images: ['https://apistore.cybersoft.edu.vn/images/van-old-school.png'], // Thay bằng URL hình ảnh thực tế
   },
   jsonLd: {
     '@context': 'https://schema.org',
