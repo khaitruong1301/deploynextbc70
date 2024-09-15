@@ -3,14 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 
 // Hàm này tạo ra danh sách các ID mà ứng dụng sẽ tạo trang tĩnh cho chúng
-export async function generateStaticParams() {
-  // Giả sử bạn có một hàm lấy tất cả sản phẩm, trả về danh sách ID sản phẩm
-  const products = await getAllProductAction(); // Hàm này cần được triển khai nếu chưa có
+// export async function generateStaticParams() {
+//   // Giả sử bạn có một hàm lấy tất cả sản phẩm, trả về danh sách ID sản phẩm
+//   const products = await getAllProductAction(); // Hàm này cần được triển khai nếu chưa có
   
-  return products.map(product => ({
-    id: product.id.toString(), // Trả về ID dưới dạng string
-  }));
-}
+//   return products.map(product => ({
+//     id: product.id.toString(), // Trả về ID dưới dạng string
+//   }));
+// }
 
 const Detail = async ({ params }) => {
   const prodDetail = await getProductByIdAction(params.id); // Lấy chi tiết sản phẩm theo ID

@@ -2,7 +2,6 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { getAllProductAction } from "./actions/service/productApi";
 import Link from "next/link";
-
 // Thêm metadata cho SEO
 export const metadata = {
   title: 'Shoes App - Latest Shoe Collection',
