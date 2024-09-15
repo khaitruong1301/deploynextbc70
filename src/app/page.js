@@ -3,58 +3,72 @@ import styles from "./page.module.css";
 import { getAllProductAction } from "./actions/service/productApi";
 import Link from "next/link";
 
+// Thêm metadata cho SEO
+export const metadata = {
+  title: 'Shoes App - Latest Shoe Collection',
+  description: 'Discover the latest collection of shoes in our Shoes App. Find detailed descriptions and reviews for all products.',
+  openGraph: {
+    title: 'Shoes App - Latest Shoe Collection',
+    description: 'Discover and shop the latest shoes collection with detailed reviews.',
+    url: 'https://yourdomain.com',
+    images: [
+      {
+        url: 'https://yourdomain.com/images/og-image.jpg', // Thay bằng URL hình ảnh thực tế
+        width: 800,
+        height: 600,
+        alt: 'Latest Shoes Collection',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shoes App - Latest Shoe Collection',
+    description: 'Discover and shop the latest shoes collection with detailed reviews.',
+    images: ['https://yourdomain.com/images/twitter-image.jpg'], // Thay bằng URL hình ảnh thực tế
+  },
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Shoes App - Latest Shoe Collection',
+    description: 'Discover and shop the latest collection of shoes.',
+    url: 'https://yourdomain.com',
+  },
+};
 
-//server component 
 const Home = async () => {
   const data = await getAllProductAction();
+
   return (
     <div className="container">
-      <h3>Shoes app</h3>
+      <h3>Shoes App</h3>
       <div className="row">
         {data?.map((prod) => {
-          return <div className="col-4 mt-2" key={prod.id}>
-            <div className="card">
-              <Image src={prod.image} alt={prod.name} crossOrigin="anonymous" width={500} height={500} className="w-100 h-auto" />
-              <div className="card-body">
-                <h3>{prod.name}</h3>
-                <p>{prod.description}</p>
-                <Link href={`/detail/${prod.id}`} className="btn btn-success">Xem chi tiết</Link>
-
+          return (
+            <div className="col-4 mt-2" key={prod.id}>
+              <div className="card">
+                <Image
+                  src={prod.image}
+                  alt={prod.name}
+                  crossOrigin="anonymous"
+                  width={500}
+                  height={500}
+                  className="w-100 h-auto"
+                />
+                <div className="card-body">
+                  <h3>{prod.name}</h3>
+                  <p>{prod.description}</p>
+                  <Link href={`/detail/${prod.id}`} className="btn btn-success">
+                    Xem chi tiết
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-
+          );
         })}
       </div>
-
-
     </div>
-  )
-}
-export default Home
+  );
+};
 
-
-//Cách làm sai : vì script gọi api lấy data thực hiện tại client
-// export default function Home() {
-//   const [arrProduct, setArrProduct] = useState([]);
-
-//   useEffect(() => {
-//     getAllProduct();
-//   },[])
-//   return (
-//   const getAllProduct = async() => {
-//     const res = await fetch('/api/product');
-//     const data = await res.json();
-//     console.log(data);
-//     setArrProduct(data.content);
-//   }
-//     <div className={styles.page}>
-//         <h3>Shoes shop</h3>
-//         {arrProduct.map((prod)=>{
-//           return <h3 key={prod.id}>
-//               {prod.name}
-//           </h3>
-//         })}
-//     </div>
-//   );
-// }
+export default Home;
