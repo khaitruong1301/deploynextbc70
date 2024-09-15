@@ -28,6 +28,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+
 const Detail = async ({ params }) => {
   const prodDetail = await getProductByIdAction(params.id); // Lấy chi tiết sản phẩm theo ID
 
