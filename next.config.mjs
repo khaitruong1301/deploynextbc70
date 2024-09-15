@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export', // Thêm dòng này để cấu hình xuất tệp tĩnh
-
     images: {
         remotePatterns: [
             {
